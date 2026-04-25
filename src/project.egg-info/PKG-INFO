@@ -1,0 +1,22 @@
+Metadata-Version: 2.4
+Name: project
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: librosa>=0.11.0
+Requires-Dist: manim>=0.20.1
+Requires-Dist: matplotlib>=3.10.8
+Requires-Dist: pandas>=3.0.2
+Requires-Dist: prompt-toolkit>=3.0.52
+Requires-Dist: questionary>=2.1.1
+Requires-Dist: scikit-learn>=1.8.0
+Requires-Dist: torch>=2.11.0
+Requires-Dist: tqdm>=4.67.3
+Requires-Dist: transformers>=5.5.0
+
+# Project Ideas
+- [ ] Audio Classification / Song Recomendation
+    - Interest (Aren): [55]
+    - Interest (Hail): [34]
+    - Interest (John): [0]
