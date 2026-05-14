@@ -1,0 +1,77 @@
+\input{template.tex}
+\usepackage{lipsum}
+\setupHW{CMSC 475: Applications of Audio Classification on Music Recomendation}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+In order to maximize user retention, modern day music streaming services prioritize effective but lightweight algorithms to determine which songs get recommended to which users. Some rely on cursory music metadata: if a user likes a song from a particular artist, for example, the algorithm might suggest another song from that same artist. Many platforms also base their suggestions on the listening habits of other similar users: if two users have similar song histories, the platform may recommend their songs to each other. These approaches do not always guarantee that the suggested song matches the rest of a user’s preference in areas like genre or tone. Moreover, they may rely heavily on other users’ histories and patterns. In contrast, we aimed to design a more independent recommendation process that could perform well even without using other users’ behaviors to contextualize an individual user’s preferences.
+\section{Methods}
+
+\subsection{Design Goal}
+In general, large platforms often employ a more simplistic audio analysis in order to keep their application lightweight and streamline the user experience. This simplicity, however, often comes at the price of high feature-based accuracy. The goal of our project was to take a more in-depth look at what defines music and how that definition relates to listening preferences. We examined other data channels and interpretations in order to create a comprehensive, multi-dimensional approach to evaluating music tracks.
+
+By shifting the focus from who made the song or how it is categorized to what it actually sounds like, this project bridges the gap between deep acoustic characteristics and user preferences. This approach not only yields highly accurate recommendations but also naturally surfaces independent or lesser-known artists who might otherwise be buried by traditional, popularity-driven algorithms.
+
+To achieve this, our system will focus on three core objectives:
+
+\begin{enumerate}
+	\item \textit{Classifying Audio via Spectrogram Analysis}: We will convert raw audio waveforms into spectrograms. This allows us to treat the audio data as analogus to image data, e.g. visual representations of a track's frequencies and amplitudes over time. By treating audio as an image, we can utilize deep learning models (such as Convolutional Neural Networks) to extract complex acoustic features like timbre, tempo, and harmonic structure.
+
+	\item \textit{Building User Profiles}: Rather than relying on a user's clicked genres or liked artists, the system will compile and analyze the spectrogram data directly from a user’s listening history. This aggregate data will be used to construct a unique, personalized "profile" that accurately maps their auditory preferences.
+
+	\item \textit{Generating Content-Based Recommendations}: Using this profile, the system will compare the user's acoustic baseline against a database of unlistened tracks. By mathematically matching the acoustic signatures, the engine will suggest new songs that authentically resonate with the user's established tastes based purely on similarity.
+\end{enumerate}
+
+\section{Data Collection}
+Labeled audio tracks will be sourced from FMA: A Dataset For Music Analysis \cite{defferrard2017}. The audio data is MP3-encoded. Each song will be converted from .mp3 format to a spectrogram to be processed as visual data. Other audio data provided by the dataset (volume, song length, etc.) may also play a role in data processing.
+
+\subsection{Metadata}
+Similar to existing music streaming platforms, our model takes into account each track’s metadata. The genre is a simple way to get the general impression of a track. Trends and grouping may be gleaned from information about the artist and album. Tags provide supplementary information. The number of listens provide insight into whether popular songs have more in common with each other than their unpopular counterparts. These data points, alongside many others contained in the dataset, provide a strong baseline for song analysis.
+
+\subsection{Lyrics}
+While metadata can provide general details about a song, lyrics provide more insight into semantic meaning and tone. We found this to be especially useful because these aspects are rarely captured by other song recommendation algorithms. Though this approach did come with its own limitations, it generally gave our model a fuller picture of each track.
+
+\section{Data Aquisition}
+\subsection{Free Music Archive (FMA)}
+Labeled audio tracks will be sourced from FMA: A Dataset For Music Analysis \cite{defferrard2017}. The audio data is MP3-encoded. Each song will be converted from .mp3 format to a spectrogram to be processed as visual data. Other audio data provided by the dataset (volume, song length, etc.) may also play a role in data processing.
+
+\section{Related Works}
+\lipsum[6-7]
+
+\section{Conclusion}
+\lipsum[10]
+
+\subsection{Limitations}
+\lipsum[11]
+
+\subsection{Continuation}
+\lipsum[12]
+
+
+\begin{thebibliography}{9}
+
+	\bibitem{adiyansjah2019}
+	Adiyansjah, A., Wilie, B., \& Suhartono, D. (2019). Music recommender system based on genre using convolutional recurrent neural networks. \textit{Procedia Computer Science}, 157, 99-109. \url{https://doi.org/10.1016/j.procs.2019.08.146}
+
+	\bibitem{choi2017}
+	Choi, K., Fazekas, G., Sandler, M., \& Cho, K. (2017). Convolutional recurrent neural networks for music classification. \textit{2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 2392-2396. \url{https://doi.org/10.1109/ICASSP.2017.7952585}
+
+	\bibitem{kostrzewa2024}
+	Kostrzewa, D., Chrobak, J., \& Brzeski, R. (2024). Attributes relevance in content-based music recommendation system. \textit{Applied Sciences}, 14(2), 855. \url{https://doi.org/10.3390/app14020855}
+
+	\bibitem{vandenoord2013}
+	van den Oord, A., Dieleman, S., \& Schrauwen, B. (2013). Deep content-based music recommendation. \textit{Advances in Neural Information Processing Systems}, 26, 2643-2651.
+
+	\bibitem{spotifyalgo}
+	Spotify Algorithm. XDA Developers. \url{https://www.xda-developers.com/spotify-algorithm-recommends-music/}
+
+	\bibitem{defferrard2017}
+	Michaël Defferrard, Kirell Benzi, Pierre Vandergheynst, Xavier Bresson. (2017). FMA: A Dataset For Music Analysis. \textit{International Society for Music Information Retrieval Conference (ISMIR)}. \url{https://github.com/mdeff/fma}
+
+\end{thebibliography}
+
+\end{document}
+

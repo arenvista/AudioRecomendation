@@ -1,0 +1,114 @@
+\documentclass[10pt, twocolumn]{article}
+
+% ==========================================
+% 1. ENCODING, LANGUAGE & FONTS
+% ==========================================
+\usepackage[utf8]{inputenc} % Allows standard keyboard character input
+\usepackage[T1]{fontenc}    % Better font encoding for accented characters
+\usepackage[english]{babel} % Language hyphenation and typographical rules
+\usepackage{lipsum}         % For generating filler text
+
+% ==========================================
+% 2. PAGE LAYOUT
+% ==========================================
+\usepackage[letterpaper, margin=1in]{geometry} % Standard 1-inch margins
+\usepackage{microtype}                         % Subtly improves spacing and fully justifies text
+\usepackage{parskip}                           % Adds space between paragraphs instead of indenting
+
+% ==========================================
+% 3. MATH PACKAGES
+% ==========================================
+\usepackage{amsmath}  % Essential for advanced math environments
+\usepackage{amssymb}  % Extended math symbols
+\usepackage{amsfonts} % Mathematical fonts
+\usepackage{amsthm}   % Theorem environments
+\usepackage{mathrsfs} % Required for \mathscr
+
+% ==========================================
+% 4. COLORS & CODE FORMATTING
+% ==========================================
+\usepackage{xcolor}
+\usepackage{minted}
+\usemintedstyle{catppuccin-latte}
+
+% Catppuccin Palette
+\definecolor{catblue}{HTML}{1E66F5}
+\definecolor{catgreen}{HTML}{40A02B}
+\definecolor{catred}{HTML}{d20f39}
+\definecolor{catorange}{HTML}{fe640b}
+\definecolor{catyellow}{HTML}{df8e1d}
+\definecolor{catpurple}{HTML}{8839ef}
+\definecolor{catgray}{HTML}{5c5f77}
+
+% ==========================================
+% 5. GRAPHICS, FLOATS & LISTS
+% ==========================================
+\usepackage{graphicx} % Required for inserting images
+\usepackage{float}    % Better control over figure placement (allows [H] modifier)
+\usepackage{enumitem} % Control list formatting
+
+% ==========================================
+% 6. CUSTOM BOXES (tcolorbox)
+% ==========================================
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins}
+
+% Base Custom Box Environment
+\newenvironment{cbox}[2]{
+	\begin{tcolorbox}[
+			colback=white,
+			colframe=gray,
+			boxrule=0.5pt,
+			arc=5pt,
+			top=10pt,
+			bottom=10pt,
+			breakable, % Allows the box to break smoothly across pages
+		]
+		\textcolor{#1}{\textbf{#2}} % Places the colored text at the start of the box
+		}{
+	\end{tcolorbox}
+}
+
+% ==========================================
+% 7. TITLE & HEADER FORMATTING
+% ==========================================
+\usepackage{titling}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+% Title Adjustments
+% \setlength{\droptitle}{-2cm} % Move title block up
+% \pretitle{\begin{center}\large}
+% 		\posttitle{\par\end{center}\vspace{0em}}
+% \preauthor{\begin{center}\large\lineskip 0.5em\begin{tabular}[t]{c}}
+% 			\postauthor{\end{tabular}\par\end{center}\vspace{0em}}
+% \predate{\begin{center}\large}
+% 		\postdate{\par\end{center}\vspace{-1em}}
+
+\definecolor{h1}{HTML}{5c5f77}
+\definecolor{h2}{HTML}{4c4f69}
+\definecolor{h3}{HTML}{5c5f77}
+\definecolor{h4}{HTML}{6c6f85}
+% Section Formatting
+% \titleformat{\section}
+% {\color{black}\normalfont\large\bfseries}{\thesection}{1em}{}[\titlerule]
+% \titleformat{\subsection}
+% {\color{black}\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+% Header and Footer
+% Custom Homework Setup Macro
+% Usage: \setupHW{Course Name}{Homework Number}
+\newcommand{\setupHW}[1]{
+	% Header and Footer setup
+	\pagestyle{fancy}
+	\fancyhf{}
+	\lhead{#1}
+	\rhead{\thepage}
+	% Title setup
+	\title{#1}
+	\author{
+		Aren Vista, Haliey Davio \\
+		\textit{University of Maryland, Baltimore County}
+	}
+	\date{\today}
+}
+%
