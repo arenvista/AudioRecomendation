@@ -10,11 +10,11 @@
 In order to maximize user retention, modern day music streaming services prioritize effective but lightweight algorithms to determine which songs get recommended to which users. Some rely on cursory music metadata: if a user likes a song from a particular artist, for example, the algorithm might suggest another song from that same artist. Many platforms also base their suggestions on the listening habits of other similar users: if two users have similar song histories, the platform may recommend their songs to each other. These approaches do not always guarantee that the suggested song matches the rest of a user’s preference in areas like genre or tone. Moreover, they may rely heavily on other users’ histories and patterns. In contrast, we aimed to design a more independent recommendation process that could perform well even without using other users’ behaviors to contextualize an individual user’s preferences.
 
 \section{Design Goal}
-In general, large platforms often employ a more simplistic audio analysis in order to keep their application lightweight and streamline the user experience. This simplicity, however, often comes at the price of high feature-based accuracy. The goal of our project was to take a more in-depth look at what defines music and how that definition relates to listening preferences. We examined other data channels and interpretations in order to create a comprehensive, multi-dimensional approach to evaluating music tracks.
+In general, we found that large platforms often employ more simplistic audio analysis in order to keep their applications lightweight and streamline the user experience. This simplicity, however, often comes at the cost of feature-based accuracy. In our project, we aimed to take a more in-depth look at what defines music and how that definition relates to listening preferences. We examined other data channels and interpretations in order to create a comprehensive, multi-dimensional approach to evaluating music tracks.
 
-By shifting the focus from who made the song or how it is categorized to what it actually sounds like, this project bridges the gap between deep acoustic characteristics and user preferences. This approach not only yields highly accurate recommendations but also naturally surfaces independent or lesser-known artists who might otherwise be buried by traditional, popularity-driven algorithms.
+By shifting our focus from who made the song or how it is categorized to what it actually sounds like, we bridge the gap between deep acoustic characteristics and user preferences. We believe this approach not only yields highly accurate recommendations but also naturally surfaces independent or lesser-known artists who might otherwise be buried by traditional, popularity-driven algorithms.
 
-To achieve this, this system focuses on three objectives:
+To achieve this, we focused on three objectives:
 
 \begin{enumerate}
 	\item \textit{Classifying Audio via Spectrogram Analysis}: The system will convert raw audio waveforms into spectrograms. This allows the audio data to be treated as analogous to image data, e.g. visual representations of a track's frequencies and amplitudes over time. By treating audio as an image, the system can utilize deep learning models (such as Convolutional Neural Networks) to extract complex acoustic features like timbre, tempo, and harmonic structure.
@@ -37,7 +37,7 @@ While metadata can provide general details about a song, lyrics provide more ins
 Our method consisted of four main stages: dataset preparation, audio representation with the Audio Spectrogram Transformer (AST), multimodal alignment with CLIP, and dimensionality reduction with principal component analysis (PCA).
 
 \subsection{Dataset}
-We primarily used the Free Music Archive (FMA) dataset \cite{FMA}. FMA contains 106,574 tracks from 16,341 artists and 14,854 albums, spanning 161 genres. Training on such a diverse collection encouraged the model to generalize more effectively and produce embeddings for previously unheard audio.
+Primarily used the Free Music Archive (FMA) dataset \cite{FMA}. FMA contains 106,574 tracks from 16,341 artists and 14,854 albums, spanning 161 genres. Training on such a diverse collection encouraged the model to generalize more effectively and produce embeddings for previously unheard audio.
 
 For each track, FMA provides a high-quality MP3 file, more than 500 precomputed features, and extensive metadata, including title, album, artist, duration, genre, and release date \cite{FMA}. For our experiments, we selected the large subset of the dataset, which yielded over 100,000 songs. Each track was trimmed to 30 seconds as a preprocessing step, allowing us to maintain consistent model inputs when converting MP3 files into a visual representation.
 
@@ -168,23 +168,23 @@ downstream tasks.
 \paragraph{Language often contradicts a song's overall tone.}
 Incorporating the semantic content of lyrics introduced an additional challenge. Because music is inherently multi-dimensional and open to interpretation, the meaning conveyed by the lyrics does not always align with the song's other characteristics. For example, an upbeat pop track may feature melancholic or introspective lyrics, producing a semantic representation that appears inconsistent with the song's genre, mood, or instrumentation.
 
-Such mismatches can weaken the effectiveness of our contrastive learning approach \cite{CLIP,CLAP}. In particular, when lyrical semantics conflict with the broader musical context, the resulting embeddings may capture contradictory signals, making it more difficult for the model to learn coherent cross-modal relationships.
+Such mismatches can weaken the effectiveness of the contrastive learning approach \cite{CLIP,CLAP}. In particular, when lyrical semantics conflict with the broader musical context, the resulting embeddings may capture contradictory signals, making it more difficult for the model to learn coherent cross-modal relationships.
 
 \paragraph{User data was difficult to obtain.}
-There was no straightforward way to query popular music platforms such as Spotify \cite{spotify} for their top playlists. To evaluate our song recommendation algorithm more realistically, we therefore compiled the sample user profiles by hand.
+There was no straightforward way to query popular music platforms such as Spotify \cite{spotify} for their top playlists. To evaluate the song recommendation algorithm more realistically, the sample user profiles were therefore compiled by hand.
 
-For each ``user,'' we selected a set of songs within the same genre, or at least similar enough to approximate a coherent listening preference. Our model was trained on 30-second audio clips from the FMA dataset \cite{FMA}, so we also had to trim each selected song to 30-second excerpts to ensure the best possible compatibility with the training data.
+For each ``user,'' a set of songs within the same genre, or at least similar enough to approximate a coherent listening preference, was selected. The model was trained on 30-second audio clips from the FMA dataset \cite{FMA}, so each selected song also had to be trimmed to a 30-second excerpt to ensure the best possible compatibility with the training data.
 
-Given more time, we would like to automate this preprocessing step by writing a script that segments longer tracks into 30-second clips and averages the resulting predictions. However, due to time constraints, this process was performed manually.
+Given more time, a useful extension would be to automate this preprocessing step by writing a script that segments longer tracks into 30-second clips and averages the resulting predictions. However, due to time constraints, this process was performed manually.
 
 \paragraph{Large dataset download issues.}
-Downloading a large dataset proved unreliable, as the \texttt{wget -c} command repeatedly stalled at 0-byte transfers. After ruling out problems with the command itself, I determined that the issue was likely related to the selected partition. I then corresponded with HPC staff to help diagnose the problem and identify a workable solution.
+Downloading a large dataset proved unreliable, as the \texttt{wget -c} command repeatedly stalled at 0-byte transfers. After ruling out problems with the command itself, it was determined that the issue was likely related to the selected partition. Subsequent correspondence with HPC staff helped diagnose the problem and identify a workable solution.
 
 \paragraph{Missing FFmpeg dependency for multicore jobs.}
-Training required \texttt{libcodec.dll} from \texttt{FFmpeg}. Although this dependency was available on the single-core cluster, the necessary module was not available for multicore jobs, which I confirmed by checking the output of \texttt{module avail}. To work around this limitation, I downloaded a static build from the Git repository and added the executable to the \texttt{PATH} environment variable.
+Training required \texttt{libcodec.dll} from \texttt{FFmpeg}. Although this dependency was available on the single-core cluster, the necessary module was not available for multicore jobs, as confirmed by checking the output of \texttt{module avail}. To work around this limitation, a static build was downloaded from the Git repository and the executable was added to the \texttt{PATH} environment variable.
 
 \paragraph{Acquiring a lyrics dataset was challenging.}
-We were unable to find a centralized repository containing lyrics for all tracks in our collection. In addition, some tracks, such as instrumentals, do not contain lyrics at all, which introduced an additional design consideration when constructing the dataset.
+A centralized repository containing lyrics for all tracks in the collection could not be found. In addition, some tracks, such as instrumentals, do not contain lyrics at all, which introduced an additional design consideration when constructing the dataset.
 
 Given more time, a promising extension would be to develop a representation that captures the semantic content conveyed by musical notes themselves. For example, one could draw on ideas from music theory to group chords, motifs, or harmonic progressions and model them as a ``corpus'' analogous to natural language, thereby enabling analysis even for tracks without lyrics.
 
