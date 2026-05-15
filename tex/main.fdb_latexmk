@@ -1,5 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1778789870.24634 "main.tex" "main.pdf" "main" 1778789873.06277 2
+["pdflatex"] 1778825646.47031 "main.tex" "main.pdf" "main" 1778825649.26032 2
+  "/home/sybil/Documents/Untitled.png" 1778801710.57392 321398 b4e8d2683877dd5440cd14d50b702b15 ""
+  "/home/sybil/Downloads/002012.mp3.png" 1778824413.21606 619798 0de65f173323ff9eca97503aa2b8fde0 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1775415801 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1775415801 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1775415801 3584 2d666ecf6d466d8b007246bc2f94d9da ""
@@ -153,14 +155,7 @@
   "/usr/share/texmf-dist/tex/latex/lineno/lineno.sty" 1775415801 155535 edbc920f8c4825a66d507b1de69c9ae0 ""
   "/usr/share/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex" 1775415801 95525 6fd0552101a6b1f9b7a84b402ec435ba ""
   "/usr/share/texmf-dist/tex/latex/lipsum/lipsum.sty" 1775415801 14690 c2c754218a7108db7823a4839c1bc3cd ""
-  "/usr/share/texmf-dist/tex/latex/microtype/microtype-pdftex.def" 1775415801 49656 1c61dbb6f95479ba3d6c0033b53590e2 ""
-  "/usr/share/texmf-dist/tex/latex/microtype/microtype.cfg" 1775415801 27642 f0cea12315babf4d40608f4eeb5c8458 ""
-  "/usr/share/texmf-dist/tex/latex/microtype/microtype.sty" 1775415801 102845 043c56602c7d94c8a716319df1af5479 ""
-  "/usr/share/texmf-dist/tex/latex/microtype/mt-cmr.cfg" 1775415801 22906 2122f73c0e7dc828f24240c2422dfe25 ""
-  "/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg" 1775415801 5929 2b35ae0f0fb46984dfffa2bc9d09de5c ""
-  "/usr/share/texmf-dist/tex/latex/microtype/mt-msb.cfg" 1775415801 5594 992ef5c3f8fd1168bb7101a957333065 ""
   "/usr/share/texmf-dist/tex/latex/minted/minted.sty" 1775415801 73364 3ba8c7272bc91743ef9ba45bc39808ec ""
-  "/usr/share/texmf-dist/tex/latex/parskip/parskip.sty" 1775415801 4288 94714aa7f535440f33181fec52a31963 ""
   "/usr/share/texmf-dist/tex/latex/pdfcol/pdfcol.sty" 1775415801 8086 ac143843b6ea88d172677dc3ed532925 ""
   "/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty" 1775415801 1090 bae35ef70b3168089ef166db3e66f5b2 ""
   "/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty" 1775415801 373 00b204b1d7d095b892ad31a7494b0373 ""
@@ -190,9 +185,9 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1775415801 43569 fd570f2fa160877d211e859f687312ba ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1776033783 5385779 47c0c393a77fd4a098bacfd57d66b88a ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1776033718 2328186 fb2a0740eca7cd1dc5faff2dbd579ebc ""
-  "main.aux" 1778789872.83907 3062 01c5df2dacfeebf68fedb6af1addd9c1 "pdflatex"
-  "main.tex" 1778789869.17044 20935 5cda133310802c27fecd7d7376e56a0c ""
-  "template.tex" 1778784212.97968 3720 53e3fc7477bec4542e87b4f0fe982375 ""
+  "main.aux" 1778825649.04243 3625 8898a8feb9f04fcebe96a8ed4a68fd96 "pdflatex"
+  "main.tex" 1778825645.51241 23272 6222c4903ee20fea9d4e1a35e16f1b72 ""
+  "template.tex" 1778825395.25742 3540 19a182971571324ed551f2ea3b4155a7 ""
   (generated)
   "main.aux"
   "main.log"
