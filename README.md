@@ -116,6 +116,6 @@ Loads a full-catalog PCA CSV and a per-user PCA CSV, finds each user's nearest-n
 
 ---
 <p align="center">
-  <img src="./tex/main-1.svg" alt="Page 1" width="80%">
+  <img src="./tex/main_1.svg" alt="Page 1" width="80%">
 </p>
 
