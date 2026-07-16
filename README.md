@@ -111,3 +111,11 @@ Loads a full-catalog PCA CSV and a per-user PCA CSV, finds each user's nearest-n
 - No practical way to pull real user listening data from platforms like Spotify, so evaluation used small, hand-curated user libraries instead.
 - FFmpeg's `libcodec.dll` wasn't available on the multicore HPC partition used for training and had to be manually built and added to `PATH`.
 - A centralized lyrics dataset covering the full corpus wasn't available; instrumental tracks have no lyrics by definition.
+
+***See paper below for more information*** 
+
+---
+<p align="center">
+  <img src="./tex/main-1.svg" alt="Page 1" width="80%">
+</p>
+

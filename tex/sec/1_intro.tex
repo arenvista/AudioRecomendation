@@ -1,0 +1,27 @@
+\section{Introduction}
+\label{sec:intro}
+
+In order to maximize user retention, modern day music streaming services prioritize effective but lightweight algorithms to determine which songs get recommended to which users. Some rely on cursory music metadata: if a user likes a song from a particular artist, for example, the algorithm might suggest another song from that same artist. Many platforms also base their suggestions on the listening habits of other similar users: if two users have similar song histories, the platform may recommend their songs to each other. These approaches do not always guarantee that the suggested song matches the rest of a user’s preference in areas like genre or tone. Moreover, they may rely heavily on other users’ histories and patterns. In contrast, we aimed to design a more independent recommendation process that could perform well even without using other users’ behaviors to contextualize an individual user’s preferences.
+
+When it comes to evaluating the songs themselves, large platforms generally employ a more simplistic audio analysis in order to keep their application lightweight and streamline the user experience. This simplicity, however, often comes at the price of high feature-based accuracy. The goal of our project was to take a more in-depth look at what defines music and how that definition relates to listening preferences. We examined other data channels and interpretations in order to create a comprehensive, multi-dimensional approach to evaluating music tracks.
+
+By shifting the focus from a song's artist or category to what it actually sounds like, this method bridges the gap between audio characteristics and user preferences. This approach not only results in highly accurate recommendations but also highlights lesser-known artists that may otherwise be buried by traditional, popularity-driven algorithms.
+
+To achieve this, this system focuses on three objectives:
+
+\begin{enumerate}
+	\item \textit{Spectrogram Representation}: The system will convert each .mp3 file into a spectrogram. This allows the audio data to be treated as image data, creating a visual representation of a track's frequencies and amplitudes over time. By treating audio as an image, the system can utilize deep learning models (such as Convolutional Neural Networks) to extract complex audio features like timbre, tempo, and structure.
+
+	\item \textit{User Profiles}: This approach creates a series of fake "users". Each has their own invented listening history, a series of songs that define their music taste. These fake users are independent of an actual music platform, meaning rather than clicked genres or liked artists affecting recommendations, it's the actual audio qualities of a user's song history. This creates a stronger approximation of user preferences based primarily on their music tastes.
+
+	\item \textit{Generating Content-Based Recommendations}: Using each user's profile, the model will compare the user's listening history against a track database. By assessing the signatures of songs from the dataset and the user, the engine will suggest new songs that fit the user's established tastes.
+\end{enumerate}
+
+\textbf{Data Collection}
+Labeled audio tracks will be sourced from FMA: A Dataset For Music Analysis \cite{FMA}. The audio data is MP3-encoded. Each song will be converted from .mp3 format to a spectrogram to be processed as visual data. Other audio data provided by the dataset (volume, song length, etc.) may also play a role in data processing.
+
+\textbf{Metadata}
+Similar to existing music streaming platforms, the model takes into account each track’s metadata. The genre is a simple way to get the general impression of a track. Trends and grouping may be gleaned from information about the artist and album. Tags provide supplementary information. The number of listens provides insight into whether popular songs have more in common with each other than their unpopular counterparts. These data points, alongside many others contained in the dataset, provide a strong baseline for song analysis.
+
+\textbf{Lyrics}
+While metadata can provide general details about a song, lyrics provide more insight into semantic meaning and tone. This was found to be especially useful because these aspects are rarely captured by other song recommendation algorithms. Though this approach came with its own set of limitations, it generally gave the model a fuller picture of each track.

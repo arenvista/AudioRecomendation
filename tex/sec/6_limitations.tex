@@ -1,0 +1,16 @@
+\section{Limitations}
+
+\textbf{Language often contradicts a song’s overall tone.} Incorporating the semantic content of lyrics introduced a challenge: meaning conveyed by lyrics does not always align with the song’s other characteristics. For example, an upbeat pop track may feature melancholic or introspective lyrics, producing a semantic representation that appears inconsistent with the song’s genre, mood, or instrumentation.
+
+Such mismatches can weaken the effectiveness of the contrastive learning approach \cite{contrastive} \cite{contrastivefusion}. In particular, when lyrical semantics conflict with the broader musical context, the resulting embeddings may capture contradictory signals, making it more difficult for the model to learn coherent cross-modal relationships.
+
+\textbf{User data was difficult to obtain.} There was no
+straightforward way to query popular music platforms such as Spotify \cite{spotify} for their top playlists. To evaluate the song recommendation algorithm more realistically, the sample user profiles were therefore compiled by hand.
+
+For each “user,” a set of songs within the same genre, or at least similar enough to approximate a coherent listening preference, was selected. This introduces a certain level of error, as hand-selected songs will not always be precisely within the same genre or tone. Moreover, the model was trained on 30-second audio clips from the FMA dataset \cite{FMA}, so each selected song also had to be trimmed to a 30-second excerpt to ensure the best possible compatibility with the training data.
+
+\textbf{Large dataset download issues.} Downloading a large dataset proved unreliable, as the \texttt{wget -c} command repeatedly stalled at 0-byte transfers. After ruling out problems with the command itself, it was determined that the issue was likely related to the selected partition. Subsequent correspondence with HPC staff helped diagnose the problem and identify a workable solution.
+
+\textbf{Missing FFmpeg dependency for multicore jobs.} Training required \texttt{libcodec.dll} from \texttt{FFmpeg}. Although this dependency was available on the single-core cluster, the necessary module was not available for multicore jobs, as confirmed by checking the output of module avail. To work around this limitation, a static build was downloaded from the Git repository and the executable was added to the \texttt{PATH} environment variable.
+
+\textbf{Acquiring a lyrics dataset was challenging.} A centralized repository containing lyrics for all tracks in the collection could not be found. In addition, some tracks, such as instrumentals, do not contain lyrics at all, which introduced an additional design consideration when constructing the dataset.

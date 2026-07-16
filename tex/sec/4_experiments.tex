@@ -1,0 +1,46 @@
+\section{Experiments}
+
+Prior to completing any training, we evaluated our approach using the pre-trained versions of AST and CLIP and a small subset of our data. Even without any fine-tuning, the model showed early promise of grouping songs. Solely based on the PCA interpretation, the distance between two instrumental piano songs (“Here With You” and “Piano 2” by Askew Ed) was 2.0168. The distance between “Here With You” and a heavy metal song, “The White Mice” by White Mice, was 13.7109. This gave us early confirmation that even without trained weights, our model was able to closely group similar songs while pushing dissimilar songs further apart.
+
+In order to quickly validate the ground-truth, we first took a look at the genres of the songs being recommended for each user. If the recommended songs were within the same genre as those already within the fake user’s library, it was a promising early sign that the clustering was working as expected.
+
+We also evaluated the distance between songs included in each user’s library. Each of the five songs were selected to be highly similar to one another, so we were able to verify cluster effectiveness by measuring the intra-cluster distance between the songs. Metal and rock songs, such as those used for Users 02 and 05, contained more variety in characteristics like tempo and volume and therefore exhibited large intra-cluster distances. In contrast, reggae songs such as those used for User 01 had more similarities in their pacing, instrumentals, and vocals and were therefore clustered closer together.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ccc}\toprule
+ User\_ID& Genre&Intra-Cluster Distance\\\midrule
+         01&  Reggae& 2.93879742\\
+         02&  Rock/Metal& 7.0193084\\
+         03&  70s/Psychedelic& 5.6717442\\
+         04&  Classical& 4.7008497\\
+         05&  Metal& 7.0248702\\
+         06&  Jazz/Bebop& 5.6619262\\
+         07&  Pop-Punk& 5.0302312\\
+         08&  Bossa/Jazz& 6.1153690\\
+         09&  2010s Pop& 4.4693859\\
+         10&  Club& 3.7002654\\ 
+ 11& Alt Indie&3.57691073\\
+ 12& Alt Hip-Hop&4.7994033\\ \bottomrule
+    \end{tabular}
+    \caption{Intra-cluster distances across user profiles and their respective genres}
+    \label{tab:placeholder}
+\end{table}
+
+We also evaluated inter-cluster measurements, comparing the distances between each user’s cluster. When curating users, we made sure to create fake song libraries that spanned a variety of genres, from instrumental classical music to lyric-heavy rock songs. The distance between user clusters of different genres was another indicator of how well the songs were clustering. We found that classical music tended to be furthest-removed from other songs. This suits our hypothesis, as classical music is set apart by its lack of lyrics and distinct instrumental characteristics. Conversely, the danceable nature and catchy lyrics of 2010s pop and alt hip-hop meant that the two genres were relatively close to each other. There were similar trends across genres, but particularly relevant relationships are highlighted in Table 2.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ccc}\toprule
+         Genre 1&  Genre 2& Inter-Cluster Distance\\\midrule
+         Bossa/Jazz&  Club& 9.2047650\\
+         Classical&  Alt Hip-Hop& 11.8344327\\
+         Classical&  Reggae& 12.6708038\\
+ Classical& Club&11.1681592\\
+         Rock/Metal&  Pop-Punk& 5.5034570\\
+         2010s Pop&  Alt Hip-Hop& 4.596454\\ 
+ Jazz/Bebop& Alt Indie&5.15431743\\ \bottomrule
+    \end{tabular}
+    \caption{Inter-cluster distances between clusters of different genres}
+    \label{tab:placeholder}
+\end{table}
