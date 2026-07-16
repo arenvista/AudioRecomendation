@@ -114,8 +114,13 @@ Loads a full-catalog PCA CSV and a per-user PCA CSV, finds each user's nearest-n
 
 ***See paper below for more information*** 
 
----
 <p align="center">
-  <img src="./tex/main_1.svg" alt="Page 1" width="80%">
+  <picture>
+    <!-- Shown in GitHub Dark Mode -->
+    <source media="(prefers-color-scheme: dark)" srcset="./tex/main_1_white.svg">
+    <!-- Shown in GitHub Light Mode -->
+    <source media="(prefers-color-scheme: light)" srcset="./tex/main_1.svg">
+    <!-- Fallback -->
+    <img alt="Page 1" src="./tex/main_1.svg" width="80%">
+  </picture>
 </p>
-
