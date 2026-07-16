@@ -112,15 +112,15 @@ Loads a full-catalog PCA CSV and a per-user PCA CSV, finds each user's nearest-n
 - FFmpeg's `libcodec.dll` wasn't available on the multicore HPC partition used for training and had to be manually built and added to `PATH`.
 - A centralized lyrics dataset covering the full corpus wasn't available; instrumental tracks have no lyrics by definition.
 
-***See paper below for more information*** 
+> ***See paper below for more information*** 
+
+----
 
 <p align="center">
-  <picture>
-    <!-- Shown in GitHub Dark Mode -->
-    <source media="(prefers-color-scheme: dark)" srcset="./tex/main_1_white.svg">
-    <!-- Shown in GitHub Light Mode -->
-    <source media="(prefers-color-scheme: light)" srcset="./tex/main_1.svg">
-    <!-- Fallback -->
-    <img alt="Page 1" src="./tex/main_1.svg" width="80%">
-  </picture>
+  <img src="./tex/main_1.svg" alt="Page 1" width="80%">
+  <img src="./tex/main_2.svg" alt="Page 2" width="80%">
+  <img src="./tex/main_3.svg" alt="Page 3" width="80%">
+  <img src="./tex/main_4.svg" alt="Page 4" width="80%">
+  <img src="./tex/main_5.svg" alt="Page 5" width="80%">
 </p>
+
